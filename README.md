@@ -1,2 +1,3 @@
 # WIP: cruise-control-ui
-kafka Cruise Control UI
+
+This is a UI for [LinkedIn Cruise Control](https://github.com/linkedin/cruise-control)
