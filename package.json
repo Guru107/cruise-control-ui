@@ -1,23 +1,16 @@
 {
   "name": "cruise-control-ui",
-  "version": "1.0.0",
-  "description": "UI for LinkedIn's Cruise Control",
-  "main": "index.js",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-scripts": "1.1.4"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Guru107/cruise-control-ui.git"
-  },
-  "keywords": [
-    "cruise-control",
-    "kafka"
-  ],
-  "author": "Guru107 <guruak107@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Guru107/cruise-control-ui/issues"
-  },
-  "homepage": "https://github.com/Guru107/cruise-control-ui#readme"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
 }
