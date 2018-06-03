@@ -1,3 +1,3 @@
-# WIP: cruise-control-ui
+# Client
 
-This is a UI for [LinkedIn Cruise Control](https://github.com/linkedin/cruise-control)
+This is the front-end for cruise control UI. It is created using Create React App
