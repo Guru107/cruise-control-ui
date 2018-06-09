@@ -1,8 +1,14 @@
 import { createContext } from 'react'
 
-const CruiseControlState = createContext({
-	cruiseControl: {test:'hello,state!'},
+export const initialState = {
+	cruiseControl: {
+		ccstate:{},
+		load:{},
+		kafka_cluster_state:{}
+	},
 	updateState: () => {}
-})
+}
+
+const CruiseControlState = createContext(initialState)
 
 export default CruiseControlState

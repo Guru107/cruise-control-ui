@@ -1,17 +1,16 @@
 import React,{Component} from 'react'
-import { getCruiseControlState } from '../api/state'
+import { getCruiseControlState } from './api'
 
 class StateView extends Component {
 
 	componentDidMount(){
 		getCruiseControlState().then(response => {
-			
-			this.props.updateState(response)
+			this.props.updateState(response,'ccstate')
 		})
 	}
 
 	render(){
-		const { AnalyzerState, ExecutorState, MonitorState } = this.props.cruiseControl
+		const { AnalyzerState, ExecutorState, MonitorState } = this.props.ccstate
 		return (
 			<div>
 				{

@@ -1,45 +1,57 @@
 import React, { Component } from 'react'
-import CruiseControlState from './app_state'
+import CruiseControlState, { initialState } from './app_state'
 import StateView from './state_view'
+import LoadView from './load_view'
 
 class App extends Component {
-	constructor(props) {
-		super(props)
+	constructor(_props) {
+		super(_props)
 		
-		this.updateState = newStateFragment => {
+		this.updateState = (newStateFragment,statepath) => {
 			this.setState(prevState => {
-				console.log(newStateFragment)
+				
 				return {
 					cruiseControl: {
-						...prevState.cruiseControl,
-						...newStateFragment
+						[statepath]:{
+							...prevState.cruiseControl[statepath],
+							...newStateFragment
+						}
 					}
 				}
 			})
 		}
 		this.state = {
-			cruiseControl:{test: 'hello, state!'},
+			...initialState,
 			updateState: this.updateState
 		}
 
 	}
 	render() {
 		return (
-			<CruiseControlState.Provider value={ this.state }>
+			<CruiseControlState.Provider value={this.state}>
 				<div>
 					<header>
 						<h1>Kafka Cruise Control</h1>
 					</header>
 					<div>
+					
 						<CruiseControlState.Consumer>
 							{
-								(state) => <StateView {...state}/>
+								(state) => <StateView ccstate={state.cruiseControl.ccstate} updateState={state.updateState}/>
 								
+							}
+						</CruiseControlState.Consumer>
+				
+					
+						<CruiseControlState.Consumer>
+							{
+								(state) => <LoadView load={state.cruiseControl.load} updateState={state.updateState}/>
 							}
 						</CruiseControlState.Consumer>
 					</div>
 				</div>
-			</CruiseControlState.Provider>
+				</CruiseControlState.Provider>
+			
 		)
 	}
 }
