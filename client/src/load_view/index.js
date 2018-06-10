@@ -18,6 +18,7 @@ class LoadView extends Component {
     } = this.props
     return (
       <div>
+        <h2>Load View</h2>
         {brokers && (
           <div>
             <h3>Broker Info</h3>

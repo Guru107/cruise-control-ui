@@ -12,6 +12,7 @@ class StateView extends Component {
     const { AnalyzerState, ExecutorState, MonitorState } = this.props.ccstate
     return (
       <div>
+        <h2>Cruise Control State</h2>
         {AnalyzerState && AnalyzerState.isProposalReady ? (
           <div>
             <h3>Analyzer State</h3>
