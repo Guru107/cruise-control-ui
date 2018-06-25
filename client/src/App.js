@@ -1,21 +1,40 @@
-import React, { Component } from 'react'
+import React from 'react'
 import CruiseControlStateComponent from './app_state'
-import { MuiThemeProvider } from  '@material-ui/core/styles'
+import { MuiThemeProvider, withStyles } from '@material-ui/core/styles'
 import AppBar from './app_bar'
-import theme from './Theme'
+import customTheme from './Theme'
+import Paper from '@material-ui/core/Paper'
+import Grid from '@material-ui/core/Grid'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
-class App extends Component {
-  render() {
-    return (
-      <CruiseControlStateComponent>
-        <MuiThemeProvider theme={theme}>
-          <CssBaseline/>
-          <AppBar/>
-        </MuiThemeProvider>
-      </CruiseControlStateComponent>
-    )
+const styles = theme => ({
+  root: {
+    flexGrow: 1
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary
   }
+})
+
+function App(props) {
+  const { classes } = props
+  return (
+    <CruiseControlStateComponent>
+      <MuiThemeProvider theme={customTheme}>
+        <CssBaseline />
+        <div className={classes.root}>
+          <AppBar />
+          <Grid container style={{ paddingLeft: 5, paddingRight: 5 }}>
+            <Grid item xs={12}>
+              <Paper className={classes.paper}>Paper</Paper>
+            </Grid>
+          </Grid>
+        </div>
+      </MuiThemeProvider>
+    </CruiseControlStateComponent>
+  )
 }
 
-export default App
+export default withStyles(styles)(App)
