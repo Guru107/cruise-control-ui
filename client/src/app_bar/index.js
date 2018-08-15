@@ -4,14 +4,27 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-const styles = theme =>({
-	button: {
-		margin: theme.spacing.unit,
-	}
-});
+import LinearProgress from '@material-ui/core/LinearProgress';
+const styles = theme => 
+{
+	return {
+		button: {
+			margin: theme.spacing.unit,
+		},
+		
+		
+		barColorPrimary: {
+			backgroundColor: theme.palette.primary.light
+		}
+		
+		
+	};
+}
+
 
 function CruiseControlAppBar(props) {
 	const { classes } = props
+
 	return (
 		<div className={classes.root}>
 			<AppBar position="static">
@@ -20,6 +33,7 @@ function CruiseControlAppBar(props) {
 						Kafka Cruise Control Dashboard
 					</Typography>
 				</Toolbar>
+				<LinearProgress classes={{barColorPrimary:classes.barColorPrimary}}/>
 			</AppBar>
 			<div>
 				<Button variant="contained" color="primary" className={classes.button}>State</Button>

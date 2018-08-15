@@ -6,6 +6,9 @@ import customTheme from './Theme'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import CruiseControlState from './state_view'
+import { Consumer } from './app_state'
+
 
 const styles = theme => ({
   root: {
@@ -20,15 +23,26 @@ const styles = theme => ({
 
 function App(props) {
   const { classes } = props
+  
   return (
     <CruiseControlStateComponent>
       <MuiThemeProvider theme={customTheme}>
         <CssBaseline />
         <div className={classes.root}>
           <AppBar />
+          
           <Grid container style={{ paddingLeft: 5, paddingRight: 5 }}>
             <Grid item xs={12}>
-              <Paper className={classes.paper}>Paper</Paper>
+              <Paper className={classes.paper}>
+              <Consumer>
+              {
+                ({ccstate,updateState}) => {
+                 return <CruiseControlState ccstate={ccstate} updateState={updateState}/>
+                }
+              }
+              </Consumer>
+                
+              </Paper>
             </Grid>
           </Grid>
         </div>

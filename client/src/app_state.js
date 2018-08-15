@@ -8,7 +8,7 @@ class CruiseControlStateComponent extends Component {
     this.updateState = this.updateState.bind(this)
 
     this.state = {
-      state: null,
+      ccstate: {},
       load: null,
       kafka_cluster_state: null,
       updateState: this.updateState
@@ -18,14 +18,14 @@ class CruiseControlStateComponent extends Component {
   updateState(newStateFragment, statepath) {
     this.setState(prevState => {
       const newState = {
-        cruiseControl: {
-          ...prevState.cruiseControl,
+        
+          ...prevState,
           [statepath]: {
-            ...prevState.cruiseControl[statepath],
+            ...prevState[statepath],
             ...newStateFragment
           }
-        }
-      }
+        
+      } 
       return newState
     })
   }
