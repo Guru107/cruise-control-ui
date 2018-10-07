@@ -11,13 +11,10 @@ const styles = theme =>
 		button: {
 			margin: theme.spacing.unit,
 		},
-		
-		
+			
 		barColorPrimary: {
 			backgroundColor: theme.palette.primary.light
-		}
-		
-		
+		}	
 	};
 }
 

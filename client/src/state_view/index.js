@@ -36,7 +36,7 @@ class StateView extends Component {
           <h3>Monitor State</h3>
           <div>Current Monitoring State: {MonitorState.state}</div>
           <div>Percentage trained: {MonitorState.trainingPct}</div>
-          <div>Is training complete: {MonitorState.trained}</div>
+          <div>Is training complete: {JSON.stringify(MonitorState.trained)}</div>
           <div>Total partitions: {MonitorState.numTotalPartitions}</div>
           <div>
             Number of valid partitions: {MonitorState.numValidPartitions}
