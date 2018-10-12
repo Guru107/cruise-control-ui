@@ -1,7 +1,7 @@
 import { API_BASE_URL } from '../constants'
 /**
  * @description This API gets the current state of Kafka cluster to which cruise control points to
- * @param {boolean} verbose 
+ * @param {boolean} verbose
  */
 export async function getKafkaClusterState(verbose) {
   return await fetch(

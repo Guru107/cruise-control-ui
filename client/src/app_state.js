@@ -1,4 +1,4 @@
-import React,{ createContext, Component } from 'react'
+import React, { createContext, Component } from 'react'
 
 export const { Provider, Consumer } = createContext()
 
@@ -18,24 +18,18 @@ class CruiseControlStateComponent extends Component {
   updateState(newStateFragment, statepath) {
     this.setState(prevState => {
       const newState = {
-        
-          ...prevState,
-          [statepath]: {
-            ...prevState[statepath],
-            ...newStateFragment
-          }
-        
-      } 
+        ...prevState,
+        [statepath]: {
+          ...prevState[statepath],
+          ...newStateFragment
+        }
+      }
       return newState
     })
   }
 
   render() {
-    return (
-      <Provider value={this.state}>
-        { this.props.children }
-      </Provider>
-    )
+    return <Provider value={this.state}>{this.props.children}</Provider>
   }
 }
 
