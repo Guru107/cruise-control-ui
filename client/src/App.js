@@ -3,35 +3,46 @@ import CruiseControlStateComponent from './app_state'
 import { MuiThemeProvider, withStyles } from '@material-ui/core/styles'
 import AppBar from './app_bar'
 import customTheme from './Theme'
-import Paper from '@material-ui/core/Paper'
-import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import CruiseControlState from './state_view'
-import { Consumer } from './app_state'
 
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    height: '100vh',
+    zIndex: 1,
+    overflow: 'hidden',
+    position: 'relative',
+    display: 'flex',
+    width: '100%'
   },
-  paper: {
-    padding: theme.spacing.unit * 2,
-    textAlign: 'center',
-    color: theme.palette.text.secondary
-  }
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing.unit * 3,
+    minWidth: 0 // So the Typography noWrap works
+  },
+  toolbar: theme.mixins.toolbar
 })
 
 function App(props) {
   const { classes } = props
-  
+
   return (
     <CruiseControlStateComponent>
       <MuiThemeProvider theme={customTheme}>
         <CssBaseline />
         <div className={classes.root}>
           <AppBar />
-          
-          <Grid container style={{ paddingLeft: 5, paddingRight: 5 }}>
+          <main className={classes.content}>
+            <div className={classes.toolbar} />
+            <Typography noWrap color="primary">
+              {'You think water moves fast? You should see ice.'}
+            </Typography>
+          </main>
+
+          {/*<Grid container style={{ paddingLeft: 5, paddingRight: 5 }}>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
               <Consumer>
@@ -43,8 +54,8 @@ function App(props) {
               </Consumer>
                 
               </Paper>
-            </Grid>
-          </Grid>
+            
+            </Grid>*/}
         </div>
       </MuiThemeProvider>
     </CruiseControlStateComponent>
