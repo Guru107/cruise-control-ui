@@ -3,8 +3,8 @@ import CruiseControlStateComponent from './app_state'
 import { MuiThemeProvider, withStyles } from '@material-ui/core/styles'
 import AppBar from './app_bar'
 import customTheme from './Theme'
-import Typography from '@material-ui/core/Typography'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import { Grid } from '@material-ui/core';
 
 
 const styles = theme => ({
@@ -36,10 +36,10 @@ function App(props) {
         <div className={classes.root}>
           <AppBar />
           <main className={classes.content}>
-            <div className={classes.toolbar} />
-            <Typography noWrap color="primary">
-              {'You think water moves fast? You should see ice.'}
-            </Typography>
+          <div className={classes.toolbar}></div>
+            <Grid container>
+              {'Hello'}
+            </Grid>
           </main>
 
           {/*<Grid container style={{ paddingLeft: 5, paddingRight: 5 }}>

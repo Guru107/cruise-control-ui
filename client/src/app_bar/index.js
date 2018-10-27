@@ -48,6 +48,15 @@ class CruiseControlAppBar extends Component {
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }))
   }
+
+  renderMenu = () => {
+    return ["State","Load","Partition Load","Cluster State","Proposals"]
+    .map(menu=> {
+      return (<ListItem button key={menu}>
+        <ListItemText secondary={menu} />
+      </ListItem>)
+    })
+  }
   render() {
     const { classes, theme } = this.props
 
@@ -55,21 +64,9 @@ class CruiseControlAppBar extends Component {
       <Fragment>
         <div className={classes.toolbar} />
         <List component="nav">
-          <ListItem button>
-            <ListItemText secondary="State" />
-          </ListItem>
-          <ListItem button>
-            <ListItemText secondary="Load" />
-          </ListItem>
-          <ListItem button>
-            <ListItemText secondary="Partition Load" />
-          </ListItem>
-          <ListItem button>
-            <ListItemText secondary="Cluster State" />
-          </ListItem>
-          <ListItem button>
-            <ListItemText secondary="Proposals" />
-          </ListItem>
+          {
+            this.renderMenu()
+          }
         </List>
       </Fragment>
     )
@@ -85,15 +82,15 @@ class CruiseControlAppBar extends Component {
               className={classes.navIconHide}>
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" color="inherit">
+            <Typography variant="h6" color="inherit" noWrap>
               Kafka Cruise Control Dashboard
             </Typography>
           </Toolbar>
-          {/*<LinearProgress classes={{barColorPrimary:classes.barColorPrimary}}/>*/}
+          
         </AppBar>
         <Hidden mdUp>
           <Drawer
-            variant="persistent"
+            variant="temporary"
             elevation={20}
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
             open={this.state.mobileOpen}
