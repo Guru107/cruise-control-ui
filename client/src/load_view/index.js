@@ -1,21 +1,19 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { getClusterLoad } from './api'
 import Load from './Load'
 
-class LoadView extends Component {
-  componentDidMount() {
-    getClusterLoad()
-      .then(res => {
-        console.log(res)
-        this.props.updateState(res, 'load')
-      })
-      .catch(err => console.error(err))
-  }
+function LoadView() {
+  
+  const [load, setClusterLoad] = useState({brokers: null, hosts: null})
 
-  render() {
-    const {
-      load: { brokers, hosts }
-    } = this.props
+  useEffect(()=>{
+    getClusterLoad()
+    .then(res => {
+      setClusterLoad(res)
+    })
+  },[])
+
+    const { brokers, hosts } = load
     return (
       <div>
         <h2>Load View</h2>
@@ -39,7 +37,7 @@ class LoadView extends Component {
         )}
       </div>
     )
-  }
+
 }
 
 export default LoadView
