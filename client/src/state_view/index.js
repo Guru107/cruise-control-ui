@@ -1,19 +1,23 @@
-import React, { Component } from 'react'
+import React, {useEffect, useState } from 'react'
 import { getCruiseControlState } from './api'
 
-class StateView extends Component {
-  componentDidMount() {
-    getCruiseControlState().then(response => {
-      this.props.updateState(response, 'ccstate')
-    })
-  }
+function StateView(props) {
 
-  render() {
-    const { AnalyzerState, ExecutorState, MonitorState } = this.props.ccstate
+  const [ccstate,setCCState] = useState({AnalyzerState:null,ExecutorState:null,MonitorState:null})
+
+    useEffect(()=>{
+      getCruiseControlState().then(response => {
+        setCCState(response)
+      })
+    },[])
+ 
+    const { AnalyzerState, ExecutorState, MonitorState } = ccstate
+ 
     return (
       <div>
         <h2>Cruise Control State</h2>
-        {AnalyzerState && AnalyzerState.isProposalReady ? (
+        {
+          AnalyzerState && AnalyzerState.isProposalReady ? (
           <div>
             <h3>Analyzer State</h3>
             <ul>
@@ -64,5 +68,4 @@ class StateView extends Component {
       </div>
     )
   }
-}
 export default StateView
