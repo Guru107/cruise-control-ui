@@ -1,7 +1,7 @@
 import React, {useEffect, useState } from 'react'
 import { getCruiseControlState } from './api'
 
-function StateView(props) {
+function StateView() {
 
   const [ccstate,setCCState] = useState({AnalyzerState:null,ExecutorState:null,MonitorState:null})
 

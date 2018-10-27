@@ -10,6 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Hidden from '@material-ui/core/Hidden'
 import MenuIcon from '@material-ui/icons/Menu'
 import ListItem from '@material-ui/core/ListItem'
+import { Link } from 'react-router-dom'
 
 const drawerWidth = 240
 const styles = theme => {
@@ -50,10 +51,16 @@ class CruiseControlAppBar extends Component {
   }
 
   renderMenu = () => {
-    return ["State","Load","Partition Load","Cluster State","Proposals"]
-    .map(menu=> {
-      return (<ListItem button key={menu}>
-        <ListItemText secondary={menu} />
+    return [
+      {"display":"State","route":"/"},
+      {"display":"Load","route":"load"},
+      {"display":"Partition Load","route":"partition-load"},
+      {"display":"Cluster State","route":"cluster-state"},
+      {"display":"Proposals","route":"proposals"}
+    ]
+    .map(({display,route})=> {
+      return (<ListItem button key={route} component={Link} to={route}>
+        <ListItemText secondary={display} />
       </ListItem>)
     })
   }
@@ -72,6 +79,7 @@ class CruiseControlAppBar extends Component {
     )
 
     return (
+      
       <Fragment>
         <AppBar position="absolute" className={classes.appBar}>
           <Toolbar>
@@ -116,6 +124,7 @@ class CruiseControlAppBar extends Component {
           </Drawer>
         </Hidden>
       </Fragment>
+      
     )
   }
 }

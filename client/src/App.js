@@ -6,6 +6,9 @@ import customTheme from './Theme'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { Grid } from '@material-ui/core';
 import CCState from './state_view'
+import ClusterLoad from './load_view'
+import KafkaClusterState from './kafka_cluster_state_view'
+import { BrowserRouter, Route } from 'react-router-dom'
 
 const styles = theme => ({
   root: {
@@ -20,6 +23,7 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
+    overflow: "auto",
     padding: theme.spacing.unit * 3,
     minWidth: 0 // So the Typography noWrap works
   },
@@ -30,7 +34,7 @@ function App(props) {
   const { classes } = props
 
   return (
-
+    <BrowserRouter>
       <MuiThemeProvider theme={customTheme}>
         <CssBaseline />
         <div className={classes.root}>
@@ -38,26 +42,16 @@ function App(props) {
           <main className={classes.content}>
           <div className={classes.toolbar}></div>
             <Grid container>
-              <CCState/>
+              <Route exact path="/" component={CCState} />
+              <Route path="/load" component={ClusterLoad} />
+              <Route path="/partition-load" component={() => <div>{'Work in Progress'}</div>} />
+              <Route path="/cluster-state" component={KafkaClusterState} />
+              <Route path="/proposals" component={() => <div>{'Work in Progress'}</div>} />
             </Grid>
           </main>
-
-          {/*<Grid container style={{ paddingLeft: 5, paddingRight: 5 }}>
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-              <Consumer>
-              {
-                ({ccstate,updateState}) => {
-                 return <CruiseControlState ccstate={ccstate} updateState={updateState}/>
-                }
-              }
-              </Consumer>
-                
-              </Paper>
-            
-            </Grid>*/}
         </div>
       </MuiThemeProvider>
+      </BrowserRouter>
 
   )
 }

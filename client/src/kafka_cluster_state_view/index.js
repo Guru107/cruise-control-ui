@@ -1,13 +1,19 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { getKafkaClusterState } from './api'
-class KafkaClusterStateView extends Component {
-  componentDidMount() {
+function KafkaClusterStateView() {
+
+  const [kafkaClusterState, setKafkaClusterState] = useState({})
+
+  useEffect(() => {
     getKafkaClusterState(false).then(kafkaClusterState => {
-      this.props.updateState(kafkaClusterState, 'kafka_cluster_state')
+      console.log(kafkaClusterState)
+      setKafkaClusterState(kafkaClusterState)
     })
-  }
-  render() {
-    const { KafkaBrokerState } = this.props.kafka_cluster_state
+  },[])
+
+ 
+
+    const { KafkaBrokerState } = kafkaClusterState
     return (
       <div>
         <h2>Kafka Cluster State</h2>
@@ -20,7 +26,6 @@ class KafkaClusterStateView extends Component {
         </div>
       </div>
     )
-  }
 }
 
 export default KafkaClusterStateView
