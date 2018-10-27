@@ -21,10 +21,12 @@
     "build-storybook": "build-storybook -s public"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier",
-      "git add"
-    ]
+    "linters": {
+      "src/**/*.{js,jsx,json,css}": [
+        "prettier",
+        "git add"
+      ]
+    }
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.6",
