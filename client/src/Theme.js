@@ -19,7 +19,7 @@ const theme = createMuiTheme({
       secondary: '#000000'
     },
     typography: {
-      useNextVariants: true
+      useNextVariants: true,
     }
   },
   direction: 'ltr'
