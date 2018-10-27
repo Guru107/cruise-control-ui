@@ -1,11 +1,11 @@
 import React from 'react'
-import CruiseControlStateComponent from './app_state'
+
 import { MuiThemeProvider, withStyles } from '@material-ui/core/styles'
 import AppBar from './app_bar'
 import customTheme from './Theme'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { Grid } from '@material-ui/core';
-
+import CCState from './state_view'
 
 const styles = theme => ({
   root: {
@@ -30,7 +30,7 @@ function App(props) {
   const { classes } = props
 
   return (
-    <CruiseControlStateComponent>
+
       <MuiThemeProvider theme={customTheme}>
         <CssBaseline />
         <div className={classes.root}>
@@ -38,7 +38,7 @@ function App(props) {
           <main className={classes.content}>
           <div className={classes.toolbar}></div>
             <Grid container>
-              {'Hello'}
+              <CCState/>
             </Grid>
           </main>
 
@@ -58,7 +58,7 @@ function App(props) {
             </Grid>*/}
         </div>
       </MuiThemeProvider>
-    </CruiseControlStateComponent>
+
   )
 }
 
