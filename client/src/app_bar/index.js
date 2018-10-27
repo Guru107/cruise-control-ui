@@ -85,7 +85,7 @@ class CruiseControlAppBar extends Component {
               className={classes.navIconHide}>
               <MenuIcon />
             </IconButton>
-            <Typography variant="title" color="inherit">
+            <Typography variant="h6" color="inherit">
               Kafka Cruise Control Dashboard
             </Typography>
           </Toolbar>
